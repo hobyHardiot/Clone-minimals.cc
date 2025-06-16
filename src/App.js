@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+// routes
+import Router from './routes';
+// theme
+import ThemeProvider from './theme';
+// components
+import Settings from './components/settings';
+import RtlLayout from './components/RtlLayout';
+import { ChartStyle } from './components/chart';
+import ScrollToTop from './components/ScrollToTop';
+import { ProgressBarStyle } from './components/ProgressBar';
+import NotistackProvider from './components/NotistackProvider';
+import ThemeColorPresets from './components/ThemeColorPresets';
+import ThemeLocalization from './components/ThemeLocalization';
+import MotionLazyContainer from './components/animate/MotionLazyContainer';
 
-function App() {
+// ----------------------------------------------------------------------
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <ThemeColorPresets>
+        <ThemeLocalization>
+          <RtlLayout>
+            <NotistackProvider>
+              <MotionLazyContainer>
+                <ProgressBarStyle />
+                <ChartStyle />
+                <Settings />
+                <ScrollToTop />
+                <Router />
+              </MotionLazyContainer>
+            </NotistackProvider>
+          </RtlLayout>
+        </ThemeLocalization>
+      </ThemeColorPresets>
+    </ThemeProvider>
   );
 }
-
-export default App;
